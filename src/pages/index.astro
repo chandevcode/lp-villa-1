@@ -1,38 +1,16 @@
 ---
 import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
-import VillaCard from '../components/VillaCard.astro';
+import VillaCard from '../components/VillaCard';
+import VillaGallery from '../components/VillaGallery.tsx'
+
+import { motion } from "motion/react";
 
 const villas = [
-  {
-    title: "The Bamboo Sanctuary",
-    location: "Ubud, Bali",
-    price: 480,
-    rating: 4.9,
-    category: "Jungle",
-    icon: "fa-leaf",
-    image: "https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&q=80&w=1470"
-  },
-  {
-    title: "Villa Caldera",
-    location: "Santorini, Greece",
-    price: 720,
-    rating: 4.8,
-    category: "Cliff-top",
-    icon: "fa-mountain",
-    image: "https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?auto=format&fit=crop&q=80&w=1470"
-  },
-  {
-    title: "The Zen Retreat",
-    location: "Kyoto, Japan",
-    price: 560,
-    rating: 5.0,
-    category: "Zen Garden",
-    icon: "fa-torii-gate",
-    image: "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&q=80&w=1470"
-  }
-];
----
+  { title: "The Bamboo Sanctuary", location: "Ubud, Bali", price: 480, rating: 4.9, category: "Jungle", icon: "fa-leaf", image: "https://images.unsplash.com/photo-1540541338287-41700207dee6?q=80&w=1470" },
+  { title: "Cliffside Manor", location: "Uluwatu, Bali", price: 850, rating: 4.8, category: "Ocean", icon: "fa-water", image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=1470" },
+  { title: "Azure Heights", location: "Canggu, Bali", price: 620, rating: 5.0, category: "Modern", icon: "fa-house", image: "https://images.unsplash.com/photo-1557093793-d149a38a1be8?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" }
+];---
 
 <Layout>
     <nav class="flex items-center justify-between px-8 py-6 max-w-7xl mx-auto">
@@ -92,18 +70,27 @@ const villas = [
         <p class="text-gray-500 max-w-2xl mx-auto mb-16 italic font-light">Each property is chosen for its ability to hold space — for celebration, contemplation, or simply being together.</p>
 
         <div class="grid md:grid-cols-3 gap-8">
-          {villas.map((villa) => (<VillaCard {...villa}/>
-          ))}
-          
+{villas.map((villa) => (
+      <VillaCard client:visible {...villa} />
+    ))}
         </div>
     </section>
+
+    <section class="bg-[#FDFCF9] py-24">
+  <div class="text-center mb-16">
+    <span class="text-xs uppercase tracking-widest text-[#C48C62]">Gallery</span>
+    <h2 class="text-4xl font-serif italic">Every Angle of Perfection</h2>
+  </div>
+
+  <VillaGallery client:load />
+</section>
 
     <section class="max-w-7xl mx-auto px-4 mb-32 grid lg:grid-cols-2 gap-20 items-center">
       <div>
         <span class="text-xs uppercase tracking-[0.3em] text-[#C48C62] mb-4 block">The Experience</span>
         <h2 class="text-5xl leading-tight mb-8">More Than a Stay. <br>A Way of Being.</h2>
         <p class="text-gray-500 mb-12 italic leading-relaxed">Every detail is considered. Every moment intentional. Our villas are designed for those who understand that luxury is not excess — it is the careful removal of everything unnecessary.</p>
-        <img src="https://images.unsplash.com/photo-1600607687940-c52af04657b3?auto=format&fit=crop&q=80&w=1470" class="rounded-2xl h-80 w-full object-cover shadow-xl" alt="Interior Detail">
+        <img src="https://images.unsplash.com/photo-1557093793-d149a38a1be8?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="rounded-2xl h-80 w-full object-cover shadow-xl" alt="Ubud Villa">
       </div>
 
       <div class="space-y-10">
