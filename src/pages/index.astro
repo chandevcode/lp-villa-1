@@ -1,14 +1,198 @@
 ---
 import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
+import VillaCard from '../components/VillaCard.astro';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const villas = [
+  {
+    title: "The Bamboo Sanctuary",
+    location: "Ubud, Bali",
+    price: 480,
+    rating: 4.9,
+    category: "Jungle",
+    icon: "fa-leaf",
+    image: "https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&q=80&w=1470"
+  },
+  {
+    title: "Villa Caldera",
+    location: "Santorini, Greece",
+    price: 720,
+    rating: 4.8,
+    category: "Cliff-top",
+    icon: "fa-mountain",
+    image: "https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?auto=format&fit=crop&q=80&w=1470"
+  },
+  {
+    title: "The Zen Retreat",
+    location: "Kyoto, Japan",
+    price: 560,
+    rating: 5.0,
+    category: "Zen Garden",
+    icon: "fa-torii-gate",
+    image: "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&q=80&w=1470"
+  }
+];
 ---
 
 <Layout>
-  <button type="button" class="text-white bg-success box-border border border-transparent hover:bg-success-strong focus:ring-4 focus:ring-success-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">Success</button>
-  <div class="text-white bg-success box-border border border-transparent hover:bg-success-strong focus:ring-4 focus:ring-success-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">
-    ini button 
-    </div>
+    <nav class="flex items-center justify-between px-8 py-6 max-w-7xl mx-auto">
+        <div class="text-xl font-bold tracking-tighter">VL <span class="text-xs uppercase font-light tracking-widest ml-2">Vista Luxe</span></div>
+        <div class="hidden md:flex space-x-8 text-sm uppercase tracking-wide">
+            <a href="#" class="hover:opacity-60 transition">Villas</a>
+            <a href="#" class="hover:opacity-60 transition">Experiences</a>
+            <a href="#" class="hover:opacity-60 transition">Events</a>
+            <a href="#" class="hover:opacity-60 transition">Contact</a>
+        </div>
+        <div class="flex items-center space-x-6">
+            <button class="bg-[#1A1A1A] text-white px-6 py-2 text-sm rounded-md">Book a Stay</button>
+            <span class="text-xs hidden lg:inline">+1 214.350.6123 (US)</span>
+        </div>
+    </nav>
+
+    <header class="text-center pt-16 pb-12 px-4">
+        <div class="flex justify-center -space-x-2 mb-4">
+            <img src="https://i.pravatar.cc/40?img=1" class="w-8 h-8 rounded-full border-2 border-white" alt="User">
+            <img src="https://i.pravatar.cc/40?img=2" class="w-8 h-8 rounded-full border-2 border-white" alt="User">
+            <img src="https://i.pravatar.cc/40?img=3" class="w-8 h-8 rounded-full border-2 border-white" alt="User">
+            <span class="pl-4 text-xs self-center text-gray-500 italic">Loved by 200+ happy guests</span>
+        </div>
+        <h1 class="text-5xl md:text-7xl mb-6 max-w-4xl mx-auto leading-tight">Exclusive Luxury Villas for Unforgettable Escapes</h1>
+        <p class="text-gray-500 max-w-xl mx-auto mb-10 text-lg">Discover architecturally stunning villas with private pools, personalized services, and breathtaking locations crafted for refined travelers.</p>
+        
+        <div class="max-w-xl mx-auto relative">
+            <input type="text" placeholder="FIND YOUR LUXURY VILLA" class="w-full bg-[#1A1A1A] text-white text-xs tracking-widest rounded-full py-5 px-8 outline-none">
+            <button class="absolute right-4 top-1/2 -translate-y-1/2 bg-white w-10 h-10 rounded-full text-black">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+        </div>
+    </header>
+
+    <section class="px-4 max-w-7xl mx-auto mb-24">
+        <div class="relative h-[500px] rounded-3xl overflow-hidden shadow-2xl">
+            <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&q=80&w=1470" class="w-full h-full object-cover" alt="Luxury Villa Exterior">
+            <div class="absolute bottom-8 left-8 bg-white/90 backdrop-blur-md p-4 rounded-2xl flex items-center space-x-6">
+                <div>
+                    <span class="text-[10px] uppercase tracking-widest text-gray-400 block mb-1">Guest Favorite</span>
+                    <div class="flex items-center font-bold">4.97 <i class="fa-solid fa-star text-[10px] ml-1"></i></div>
+                </div>
+                <div class="border-l border-gray-200 pl-6">
+                    <span class="text-[10px] uppercase tracking-widest text-gray-400 block mb-1">Reviews</span>
+                    <div class="font-bold text-center">122</div>
+                </div>
+                <div class="bg-black text-white w-10 h-10 flex items-center justify-center rounded-xl">
+                    <i class="fa-solid fa-map"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="max-w-7xl mx-auto px-4 mb-32 text-center">
+        <span class="text-xs uppercase tracking-[0.3em] text-[#C48C62] mb-4 block">Our Collection</span>
+        <h2 class="text-4xl mb-4 italic">A Villa for Every Kind of Stillness</h2>
+        <p class="text-gray-500 max-w-2xl mx-auto mb-16 italic font-light">Each property is chosen for its ability to hold space — for celebration, contemplation, or simply being together.</p>
+
+        <div class="grid md:grid-cols-3 gap-8">
+          {villas.map((villa) => (<VillaCard {...villa}/>
+          ))}
+          
+        </div>
+    </section>
+
+    <section class="max-w-7xl mx-auto px-4 mb-32 grid lg:grid-cols-2 gap-20 items-center">
+      <div>
+        <span class="text-xs uppercase tracking-[0.3em] text-[#C48C62] mb-4 block">The Experience</span>
+        <h2 class="text-5xl leading-tight mb-8">More Than a Stay. <br>A Way of Being.</h2>
+        <p class="text-gray-500 mb-12 italic leading-relaxed">Every detail is considered. Every moment intentional. Our villas are designed for those who understand that luxury is not excess — it is the careful removal of everything unnecessary.</p>
+        <img src="https://images.unsplash.com/photo-1600607687940-c52af04657b3?auto=format&fit=crop&q=80&w=1470" class="rounded-2xl h-80 w-full object-cover shadow-xl" alt="Interior Detail">
+      </div>
+
+      <div class="space-y-10">
+        <div class="flex gap-6">
+          <div class="w-12 h-12 flex-shrink-0 bg-[#F5F2ED] rounded-lg flex items-center justify-center"><i class="fa-solid fa-shield-check text-[#C48C62]"></i></div>
+          <div>
+            <h4 class="font-bold text-sm mb-1">Verified & Inspected</h4>
+            <p class="text-xs text-gray-400">Every villa personally visited and vetted by our curators before listing.</p>
+          </div>
+        </div>
+        <div class="flex gap-6">
+          <div class="w-12 h-12 flex-shrink-0 bg-[#F5F2ED] rounded-lg flex items-center justify-center"><i class="fa-solid fa-bell-concierge text-[#C48C62]"></i></div>
+          <div>
+            <h4 class="font-bold text-sm mb-1">Dedicated Concierge</h4>
+            <p class="text-xs text-gray-400">A personal liaison who understands your preferences and anticipates your needs.</p>
+          </div>
+        </div>
+        <button class="bg-[#C48C62] text-white px-8 py-3 rounded-full text-xs uppercase tracking-widest mt-4">Explore All Experiences →</button>
+      </div>
+    </section>
+
+    <section class="bg-black text-white py-24 px-4 text-center">
+      <h2 class="text-5xl italic mb-8">Your Perfect Retreat Awaits</h2>
+      <p class="text-gray-400 mb-12 italic">Let us match you with a villa that speaks to your soul.</p>
+      <button class="bg-[#C48C62] text-white px-10 py-4 rounded-full text-xs uppercase tracking-widest mb-6">Explore Villas →</button>
+      <p class="text-[10px] uppercase tracking-widest text-gray-500">Or speak with our team →</p>
+    </section>
+    <footer class="bg-black text-white pt-24 pb-12 px-8">
+      <div class="max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 mb-20">
+
+          <div class="lg:col-span-1">
+            <div class="text-xl font-bold tracking-tighter mb-6">VL <span class="text-[10px] uppercase font-light tracking-[0.4em] ml-2">Vista Luxe</span></div>
+            <p class="text-xs text-gray-500 italic mb-8 leading-relaxed max-w-xs">
+            Curated luxury villas for those who seek stillness, beauty, and intentional living.
+            </p>
+
+            <div class="space-y-4">
+              <span class="text-[10px] uppercase tracking-widest text-gray-400 block">Stay inspired</span>
+              <div class="flex gap-2">
+                <input type="email" placeholder="Enter your email" class="bg-[#1A1A1A] border-none text-xs px-4 py-3 rounded-md w-full focus:ring-1 focus:ring-[#C48C62] outline-none">
+                <button class="bg-[#C48C62] text-white text-[10px] uppercase tracking-widest px-6 py-3 rounded-md hover:bg-opacity-90 transition whitespace-nowrap">Subscribe →</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="hidden lg:block"></div>
+
+          <div>
+            <h4 class="text-[10px] uppercase tracking-[0.3em] text-gray-400 mb-8 font-bold">Explore</h4>
+            <ul class="space-y-4 text-xs font-light text-gray-500">
+              <li><a href="#" class="hover:text-white transition">All Villas</a></li>
+              <li><a href="#" class="hover:text-white transition">Experiences</a></li>
+              <li><a href="#" class="hover:text-white transition">Destinations</a></li>
+              <li><a href="#" class="hover:text-white transition">Events</a></li>
+            </ul>
+          </div>
+
+          <div class="grid grid-cols-2 gap-8 lg:block lg:space-y-0">
+            <div class="lg:mb-12">
+              <h4 class="text-[10px] uppercase tracking-[0.3em] text-gray-400 mb-8 font-bold">Company</h4>
+              <ul class="space-y-4 text-xs font-light text-gray-500">
+                <li><a href="#" class="hover:text-white transition">About Us</a></li>
+                <li><a href="#" class="hover:text-white transition">Our Story</a></li>
+                <li><a href="#" class="hover:text-white transition">Careers</a></li>
+                <li><a href="#" class="hover:text-white transition">Press</a></li>
+              </ul>
+            </div>
+
+            <div>
+              <h4 class="text-[10px] uppercase tracking-[0.3em] text-gray-400 mb-8 font-bold lg:mt-12">Support</h4>
+              <ul class="space-y-4 text-xs font-light text-gray-500">
+                <li><a href="#" class="hover:text-white transition">Contact Us</a></li>
+                <li><a href="#" class="hover:text-white transition">FAQ</a></li>
+                <li><a href="#" class="hover:text-white transition">Privacy Policy</a></li>
+                <li><a href="#" class="hover:text-white transition">Terms of Service</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-6">
+          <p class="text-[10px] text-gray-600 uppercase tracking-widest">© 2026 Vista Luxe. All rights reserved.</p>
+          <div class="flex space-x-6 text-gray-500">
+            <a href="#" class="hover:text-white transition text-sm"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" class="hover:text-white transition text-sm"><i class="fa-brands fa-twitter"></i></a>
+            <a href="#" class="hover:text-white transition text-sm"><i class="fa-brands fa-facebook-f"></i></a>
+          </div>
+        </div>
+      </div>
+    </footer>
 </Layout>
